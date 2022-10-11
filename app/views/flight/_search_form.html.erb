@@ -1,0 +1,6 @@
+<%= form_with model: @flights, method: "get" do |f| %>
+    <%=f.select :departure_id, @flight.map{|f| [f.departure_id]}, {prompt: "Select departure"} %>
+    <%=f.select :arrival_id, @flight.map{|f| [f.arrival_id]}, {prompt: "Select Arrival"} %>
+    <%=f.select :passengers, [1,2,3,4] , {prompt: "how many passenger"} %>
+    <%=f.select :DateTime, @flight.map{|f| [f.start]}, {prompt: "Choose Date"}%>
+<%end%>

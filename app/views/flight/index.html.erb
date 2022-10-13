@@ -1,2 +1,13 @@
 <h1>Flight Search</h1>
 <%=render "search_form"%>
+<% unless @available_flights.nil? %>
+        <% if @available_flights.any? %>
+            <h2> 
+                <%= Airport.find(params[:departure_id]).code%> to 
+                <%= Airport.find(params[:arrival_id]).code%>
+                <%= @selected_date.strftime('%B %d, %Y')%>
+            </h2>
+        <% else %>
+          <p>There are no available flights on the selected date</p>
+        <% end %>
+<% end %>

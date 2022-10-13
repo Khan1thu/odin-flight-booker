@@ -1,6 +1,14 @@
-<%= form_with model: @flights, method: "get" do |f| %>
-    <%=f.select :departure_id, @flight.map{|f| [f.departure_id]}, {prompt: "Select departure"} %>
-    <%=f.select :arrival_id, @flight.map{|f| [f.arrival_id]}, {prompt: "Select Arrival"} %>
-    <%=f.select :passengers, [1,2,3,4] , {prompt: "how many passenger"} %>
-    <%=f.select :DateTime, @flight.map{|f| [f.start]}, {prompt: "Choose Date"}%>
-<%end%>
+<%= form_with(url: "/", method: "get", local: true) do %>
+  <% @airport_options = Airport.all.map { |airport| [airport.code, airport.id] } %>
+  <% @year_options = Flight.all.map { |flight| flight.start.year }.uniq %>
+  <% @month_options = Flight.all.map { |flight| flight.start.month }.uniq %>
+  <% @day_options = Flight.all.map { |flight| flight.start.day }.uniq %>
+  <%= select_tag(:departure_id, options_for_select(@airport_options, selected: params[:departure_id]), { prompt: 'From?' }) %>
+  <%= select_tag(:arrival_id, options_for_select(@airport_options, selected: params[:arrival_id]), { prompt: 'To?' }) %>
+  <%= select_tag(:pax, options_for_select(1..4, selected: params[:pax]), { prompt: 'Passengers' }) %>
+  <%= select_tag(:day, options_for_select(@day_options, selected: params[:day])) %>
+  <%= select_tag(:month, options_for_select(@month_options, selected: params[:month])) %>
+  <%= select_tag(:year, options_for_select(@year_options, selected: params[:year])) %>
+  <%= submit_tag("Show flights", class: "button is-dark is-outlined") %>
+<%end %>
+

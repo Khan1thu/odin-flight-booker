@@ -6,6 +6,7 @@
                 <%= Airport.find(params[:departure_id]).code%> to 
                 <%= Airport.find(params[:arrival_id]).code%>
                 <%= @selected_date.strftime('%B %d, %Y')%>
+                <%=render "search_result_form"%>
             </h2>
         <% else %>
           <p>There are no available flights on the selected date</p>

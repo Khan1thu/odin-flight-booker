@@ -17,8 +17,8 @@
           </thead>
           <tbody>
             <tr>
-              <td><%= @booking.flight.departure_id.code %> <%= @booking.flight.start.strftime('%H:%M') %></td>
-              <td><%= @booking.flight.arrival_id.code %> <%= (@booking.flight.start + (@booking.flight.duration/60).to_i.hours).strftime('%H:%M') %></td>
+              <td><%= @booking.flight.departure_id %> <%= @booking.flight.start.strftime('%H:%M') %></td>
+              <td><%= @booking.flight.arrival_id %> <%= (@booking.flight.start + (@booking.flight.duration/60).to_i.hours).strftime('%H:%M') %></td>
             </tr>
           </tbody>
         </table>

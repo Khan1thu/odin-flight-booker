@@ -1,5 +1,5 @@
-<% departure_airport = @selected_flight.departure_id %>
-<% arrival_airport = @selected_flight.arrival_id %>
+<% departure_airport = @selected_flight.departure.id %>
+<% arrival_airport = @selected_flight.arrival.id %>
 <% selected_date = @selected_flight.start.strftime('%B %d, %Y') %>
 <% scheduled_time = @selected_flight.start.strftime('%H:%M') %>
 <% arrival_time = (@selected_flight.start + (@selected_flight.duration/60).to_i.hours).strftime('%H:%M') %>
@@ -13,7 +13,7 @@
             Your trip summary
           </h1>
           <h2 class="subtitle">
-            <%= selected_date %> | <%= departure_airport %> - <%= arrival_airport %> | <%= scheduled_time %> - <%= arrival_time %>
+            <%= selected_date %> |  - <%= arrival_airport %> | <%= scheduled_time %> - <%= arrival_time %>
           </h2>
         </div>
 
